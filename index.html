@@ -31,9 +31,9 @@ limitations under the License.
                     <tabset>
                         <tab ng-repeat="tab in tabs.data" heading="{{tab.user}}">
 
-                            <video controls autoplay>
-                                <source src="{{tab.stream}}">
-                            </video>
+                            <!-- video(controls, autoplay, data-ng-src="{{videoPage.currentVideo.videourl}}", type="video/mp4") -->
+
+                            <video controls autoplay data-ng-src="{{tab.stream}}"></video>
 
 
                         </tab>
