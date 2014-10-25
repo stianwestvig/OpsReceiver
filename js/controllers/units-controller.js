@@ -4,7 +4,7 @@ app.controller('unitsController', function($rootScope){
 
     units.data = {};
 
-    units.data = {
+    /*units.data = {
         '123': {
             name: 'Stian',
             id: '123',
@@ -15,7 +15,7 @@ app.controller('unitsController', function($rootScope){
             id: '124',
             marker: 'some other marker'
         }
-    };
+    };*/
 
     window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
@@ -79,7 +79,6 @@ app.controller('unitsController', function($rootScope){
         }
     };
 
-    window.users = units.data;
 
     /*var location = {
         topic: 'locationUpdate',
