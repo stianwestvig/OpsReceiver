@@ -2,15 +2,19 @@ body {
     overflow:hidden;
 }
 .container {
-    height:720PX;
-    width:1280PX;
-    text-align:center;
-    border:0px solid silver;
-    display: table-cell;
-    vertical-align:middle;
-    color:#FFFFFF;
+    height:720px;
+    width:1280px;
+    border:0 solid silver;
     background-color:darkolivegreen;
+}
+
+#message {
     font-weight:bold;
     font-family:Verdana, Geneva, sans-serif;
     font-size:50px;
+
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
+    color:#FFFFFF;
 }

@@ -16,14 +16,20 @@ limitations under the License.
 <!DOCTYPE html>
 <html>
     <head>
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/foundation/5.4.6/css/foundation.css"/>
         <link rel="stylesheet" href="css/styles.css">
         <title>OpsReceiver</title>
     </head>
     <body>
         <div class="container">
-            
+            <div class="row">
+                <div class="small-12 columns">
+                    <div id="message"></div>
+                </div>
+            </div>
+
         </div>
-        <div id="message">Talk to me</div>
+
         <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
         <script type="text/javascript" src="js/castCommunication.js"></script>
         <script type="text/javascript" src="js/datahubCommunication.js"></script>
