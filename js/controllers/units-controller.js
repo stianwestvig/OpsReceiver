@@ -13,29 +13,33 @@ app.controller('unitsController', function(){
     datahubSocket.onmessage = function (event) {
         console.log('angular, onmessage:', event);
 
-        console.log('angular, event.data.topic:', event.data.topic);
+
+        // get data json
+
+        var data = json.parse(event.data);
+        console.log('angular, data.topic:', data.topic);
 
 
 
         // users:
-        if (event.data.topic === 'setUser') {
+        if (data.topic === 'setUser') {
             console.log('units.data', units.data);
-            console.log('event.data.payload', event.data.payload);
+            console.log('event.data.payload', data.payload);
 
-            if(! $.inArray(event.data.payload.user.id, units.data)) {
-                units.data.push(event.data.payload.user)
+            if(! $.inArray(data.payload.user.id, units.data)) {
+                units.data.push(data.payload.user)
             }
         }
 
 
 
         // locations:
-        if (event.data.topic === 'locationUpdate') {
-            var posInArray = $.inArray(event.data.payload.user.id, units.data);
+        if (data.topic === 'locationUpdate') {
+            var posInArray = $.inArray(data.payload.user.id, units.data);
             if (posInArray > 0) {
                 var myLatlng = new google.maps.LatLng(
-                    event.data.payload.location.latitude,
-                    event.data.payload.location.longitude
+                    data.payload.location.latitude,
+                    data.payload.location.longitude
                 );
                 var mapOptions = {
                     zoom: 4,
@@ -45,7 +49,7 @@ app.controller('unitsController', function(){
 
                 var marker = new google.maps.Marker({
                     position: myLatlng,
-                    title: event.data.payload.user.name
+                    title: data.payload.user.name
                 });
 
                 marker.setMap(map);
@@ -56,7 +60,7 @@ app.controller('unitsController', function(){
             console.log('units.data after locationUpdate', units.data);
         }
 
-        messageBus.broadcast(event.data + '; Receiver triggered by datahub was here');
+        messageBus.broadcast(data + '; Receiver triggered by datahub was here');
 
     };
 
