@@ -33,7 +33,7 @@ limitations under the License.
 
                             <!-- video(controls, autoplay, data-ng-src="{{videoPage.currentVideo.videourl}}", type="video/mp4") -->
 
-                            <video controls autoplay data-ng-src="{{tab.stream}}"></video>
+                            <canvas width="800" height="450" id="jsmpegCanvas">Get better browser dude</canvas>
 
 
                         </tab>
@@ -74,7 +74,19 @@ limitations under the License.
         <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
         <script type="text/javascript" src="js/castCommunication.js"></script>
         <script type="text/javascript" src="js/datahubCommunication.js"></script>
+        <script type="text/javascript" src="js/jsmpg.js"></script>
         <script type="text/javascript">
+
+
+
+            // video stream:
+            var canvas = document.getElementById('jsmpegCanvas');
+            var player = new jsmpeg('http://192.168.1.251', {canvas:canvas, autoplay:true, loop: false});
+            canvas.addEventListener('click', function(){
+                if(player.playing) { player.pause(); } else { player.play(); }
+            }, false);
+
+
 
             // utility function to display the text message in the input field
             function displayText(text) {
