@@ -29,6 +29,7 @@ limitations under the License.
                 <div class="small-12 medium-8 columns">
 
                     <!--<h2>{{units.data}}</h2>-->
+                    <button class="button small" ng-click="units.data[1].active = true">Select second tab</button>
 
                     <tabset>
                         <tab data-ng-repeat="unit in units.data" heading="{{unit.name}}">

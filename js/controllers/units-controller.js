@@ -51,6 +51,11 @@ app.controller('unitsController', function($rootScope){
             }
         }
 
+        // set active tab:
+        if (data.topic === 'setTab') {
+            units.data[key].active = true;
+        }
+
 
         // locations:
         if (data.topic === 'locationUpdate') {
