@@ -26,7 +26,7 @@ app.controller('unitsController', function(){
             console.log('units.data', units.data);
             console.log('event.data.payload', data.payload);
 
-            var key = data.payload.user.id;
+            var key = data.payload.user.id.toString();
             if (!units.data[key]) {
                 console.log('adding new user:', data.payload.user);
                 units.data[key] = data.payload.user;
