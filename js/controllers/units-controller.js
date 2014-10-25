@@ -1,5 +1,5 @@
 
-app.controller('unitsController', function($scope){
+app.controller('unitsController', function(){
     var units = this;
 
     units.data = {};
@@ -30,9 +30,8 @@ app.controller('unitsController', function($scope){
             if (typeof(units.data[key]) == 'undefined') {
                 console.log('adding new user:', data.payload.user);
                 units.data[key] = data.payload.user;
-                console.log('AFTER adding new user:', units.data[key]);
+                console.log('AFTER adding new user:', units.data);
                 messageBus.broadcast(JSON.stringify(units.data));
-                $scope.apply();
             }
         }
 
