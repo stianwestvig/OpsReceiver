@@ -9,6 +9,11 @@ app.controller('unitsController', function(){
             name: 'Stian',
             id: '123',
             marker: 'some marker'
+        },
+        '124': {
+            name: 'Rittik',
+            id: '124',
+            marker: 'some other marker'
         }
     };
 
