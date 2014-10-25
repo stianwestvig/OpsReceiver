@@ -5,6 +5,7 @@ body {
     height:720px;
     width:1280px;
     border:0 solid silver;
+    padding-top: 30px;
 }
 
 #message {
