@@ -15,48 +15,34 @@ limitations under the License.
 -->
 <!DOCTYPE html>
 <html>
-<head>
-    <style type="text/css">
-        body {
-            overflow:hidden;
-        }
-        div{
-            height:720PX;
-            width:1280PX;
-            text-align:center;
-            border:0px solid silver;
-            display: table-cell;
-            vertical-align:middle;
-            color:#FFFFFF;
-            background-color:darkolivegreen;
-            font-weight:bold;
-            font-family:Verdana, Geneva, sans-serif;
-            font-size:50px;
-        }
-    </style>
-    <title>OpsReceiver</title>
-</head>
-<body>
-<DIV id="message">Talk to me</DIV>
-<script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
-<script type="text/javascript" src="js/castCommunication.js"></script>
-<script type="text/javascript" src="js/datahubCommunication.js"></script>
-<script type="text/javascript">
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+        <title>OpsReceiver</title>
+    </head>
+    <body>
+        <div class="container">
+            
+        </div>
+        <div id="message">Talk to me</div>
+        <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+        <script type="text/javascript" src="js/castCommunication.js"></script>
+        <script type="text/javascript" src="js/datahubCommunication.js"></script>
+        <script type="text/javascript">
 
-    // utility function to display the text message in the input field
-    function displayText(text) {
-        console.log(text);
-        document.getElementById("message").innerHTML=text;
-        window.castReceiverManager.setApplicationState(text);
-    };
+            // utility function to display the text message in the input field
+            function displayText(text) {
+                console.log(text);
+                document.getElementById("message").innerHTML=text;
+                window.castReceiverManager.setApplicationState(text);
+            };
 
-    window.onload = function() {
-        setupCastCommunication();
-        setupDataHubCommunication();
-    };
+            window.onload = function() {
+                setupCastCommunication();
+                setupDataHubCommunication();
+            };
 
 
 
-</script>
-</body>
+        </script>
+    </body>
 </html>
