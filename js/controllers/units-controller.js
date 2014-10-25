@@ -1,5 +1,5 @@
 
-app.controller('unitsController', function(){
+app.controller('unitsController', function($rootScope){
     var units = this;
 
     units.data = {};
@@ -45,6 +45,9 @@ app.controller('unitsController', function(){
                 units.data[key] = data.payload.user;
                 console.log('AFTER adding new user:', units.data);
                 messageBus.broadcast(JSON.stringify(units.data));
+                $rootScope.$apply(function () {
+                    units.data[key] = data.payload.user;
+                });
             }
         }
 
