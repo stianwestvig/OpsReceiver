@@ -16,7 +16,7 @@ app.controller('unitsController', function(){
 
         // get data json
 
-        var data = json.parse(event.data);
+        var data = JSON.parse(event.data);
         console.log('angular, data.topic:', data.topic);
 
 
