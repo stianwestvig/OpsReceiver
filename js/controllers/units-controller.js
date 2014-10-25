@@ -60,7 +60,7 @@ app.controller('unitsController', function(){
 
 
 
-    var location = {
+    /*var location = {
         topic: 'locationUpdate',
         payload: {
             location: {
@@ -83,7 +83,7 @@ app.controller('unitsController', function(){
                 id: 'some socket id'
             }
         }
-    };
+    };*/
 
 
 
