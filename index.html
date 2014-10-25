@@ -29,9 +29,19 @@ limitations under the License.
                 <div class="small-12 medium-8 columns" data-ng-controller="tabsController as tabs">
 
                     <tabset>
-                        <tab ng-repeat="tab in tabs.tabs" heading="{{tab.user}}">
-                            {{tab.content}}
+                        <tab heading="Stian">
+                            Innhold i første fane
                         </tab>
+                        <tab heading="Nils">
+                            Innhold i andre fane
+                        </tab>
+                        <tab heading="Tor Erling">
+                            Innhold i tredje fane
+                        </tab>
+
+                        <!--<tab ng-repeat="tab in tabs.tabs" heading="{{tab.user}}">
+                            {{tab.content}}
+                        </tab>-->
                     </tabset>
 
 
@@ -146,9 +156,9 @@ limitations under the License.
 
         <!-- angular -->
         <script src="js/angular.min.js"></script>
-        <script type="text/javascript" src="js/mm-foundation-tpls-0.4.0.min.js"></script>
-        <script type="text/javascript" src="js/app.js"></script>
-        <script type="text/javascript" src="js/controllers/tabs-controller.js"></script>
+        <script src="js/mm-foundation-tpls-0.4.0.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/controllers/tabs-controller.js"></script>
 
     </body>
 </html>
