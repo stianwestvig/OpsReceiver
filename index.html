@@ -28,10 +28,8 @@ limitations under the License.
             <div class="row">
                 <div class="small-12 medium-8 columns" data-ng-controller="tabsController as tabs">
 
-                    <h1>{{tabs.data}}</h1>
-
                     <tabset>
-                        <tab heading="Stian">
+                        <!--<tab heading="Stian">
                             Innhold i første fane
                         </tab>
                         <tab heading="Nils">
@@ -39,11 +37,11 @@ limitations under the License.
                         </tab>
                         <tab heading="Tor Erling">
                             Innhold i tredje fane
-                        </tab>
-
-                        <!--<tab ng-repeat="tab in tabs.tabs" heading="{{tab.user}}">
-                            {{tab.content}}
                         </tab>-->
+
+                        <tab ng-repeat="tab in tabs.tabs" heading="{{tab.user}}">
+                            {{tab.content}}
+                        </tab>
                     </tabset>
 
 
