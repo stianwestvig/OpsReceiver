@@ -4,6 +4,14 @@ app.controller('unitsController', function(){
 
     units.data = {};
 
+    units.data = {
+        '123': {
+            name: 'Stian',
+            id: '123',
+            marker: 'some marker'
+        }
+    };
+
     window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
     datahubSocket.onopen = function (event) {
