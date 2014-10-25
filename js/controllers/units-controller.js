@@ -1,8 +1,8 @@
 
-app.controller('tabsController', function(){
-    var tabs = this;
+app.controller('unitsController', function(){
+    var units = this;
 
-    tabs.data = [{
+    units.data = [{
         user: 'Stian',
         longitude: 10.594261,
         latitude: 59.436796,
