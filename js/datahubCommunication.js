@@ -1,5 +1,5 @@
 function setupDataHubCommunication() {
-	var datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
+	window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
 	datahubSocket.onopen = function (event) {
 		datahubSocket.send("OpsCast socket connected"); 
