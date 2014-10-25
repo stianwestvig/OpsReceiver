@@ -31,6 +31,8 @@ limitations under the License.
 
                     <h2>{{units.data}}</h2>
 
+                    <input type="text" ng-model="units.data" />
+
                     <tabset>
                         <tab data-ng-repeat="unit in units.data" heading="{{unit.name}}">
                             <h2>{{unit.id}}</h2>
