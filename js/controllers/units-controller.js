@@ -1,5 +1,5 @@
 
-app.controller('unitsController', function(){
+app.controller('unitsController', function($scope){
     var units = this;
 
     units.data = {};
@@ -31,6 +31,7 @@ app.controller('unitsController', function(){
                 console.log('adding new user:', data.payload.user);
                 units.data[key] = data.payload.user;
                 messageBus.broadcast(units.data);
+                $scope.apply();
             }
         }
 
