@@ -8,6 +8,9 @@ function setupDataHubCommunication() {
 	datahubSocket.onmessage = function (event) {
 		console.log(event);
 		displayText(event.data);
+		// if (event.data.type === 'loggedIn') {
+			messageBus.send(event.senderId, event.data);
+		// }
 	}
 }
 
