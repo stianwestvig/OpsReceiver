@@ -26,15 +26,15 @@ app.controller('unitsController', function($scope){
             console.log('units.data', units.data);
             console.log('event.data.payload', data.payload);
 
-            var key = data.payload.user.id.toString();
-            if (!units.data[key]) {
+            var key = data.payload.user.id;
+            if (typeof(units.data[key]) == 'undefined') {
                 console.log('adding new user:', data.payload.user);
                 units.data[key] = data.payload.user;
-                messageBus.broadcast(units.data);
+                console.log('AFTER adding new user:', units.data[key]);
+                messageBus.broadcast(JSON.stringify(units.data));
                 $scope.apply();
             }
         }
-
 
 
         // locations:
