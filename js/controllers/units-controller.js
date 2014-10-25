@@ -11,7 +11,7 @@ app.controller('unitsController', function(){
     };
 
     datahubSocket.onmessage = function (event) {
-        console.log(event);
+        console.log('angular, onmessage:', event);
 
 
 
