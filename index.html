@@ -29,7 +29,7 @@ limitations under the License.
                 <div class="small-12 medium-8 columns">
 
                     <tabset>
-                        <tab ng-repeat="unit in units.data" heading="{{unit.user}}">
+                        <tab data-ng-repeat="unit in units.data" heading="{{unit.name}}">
                             <canvas width="800" height="450" id="jsmpegCanvas">Get better browser dude</canvas>
                         </tab>
                     </tabset>
@@ -70,6 +70,7 @@ limitations under the License.
         <script type="text/javascript" src="js/castCommunication.js"></script>
         <script type="text/javascript" src="js/datahubCommunication.js"></script>
         <script type="text/javascript" src="js/jsmpg.js"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript">
 
 
@@ -92,7 +93,7 @@ limitations under the License.
 
             window.onload = function() {
                 setupCastCommunication();
-                setupDataHubCommunication();
+                // setupDataHubCommunication();
             };
         </script>
 
