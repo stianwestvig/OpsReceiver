@@ -2,7 +2,7 @@
 app.controller('unitsController', function(){
     var units = this;
 
-    units.data = [];
+    units.data = {};
 
     window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
@@ -26,9 +26,12 @@ app.controller('unitsController', function(){
             console.log('units.data', units.data);
             console.log('event.data.payload', data.payload);
 
-            if(! $.inArray(data.payload.user.id, units.data)) {
-                units.data.push(data.payload.user)
+            var key = data.payload.user.id;
+            if (!units.data[key]) {
+                units.data[key] = data.payload.user;
+                messageBus.broadcast(units.data);
             }
+
         }
 
 
@@ -56,12 +59,8 @@ app.controller('unitsController', function(){
 
                 units.data[posInArray].marker = marker;
             }
-
             console.log('units.data after locationUpdate', units.data);
         }
-
-        messageBus.broadcast(data + '; Receiver triggered by datahub was here');
-
     };
 
 
