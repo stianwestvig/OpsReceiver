@@ -13,6 +13,8 @@ app.controller('unitsController', function(){
     datahubSocket.onmessage = function (event) {
         console.log('angular, onmessage:', event);
 
+        console.log('angular, event.data.topic:', event.data.topic);
+
 
 
         // users:
