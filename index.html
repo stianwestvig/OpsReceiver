@@ -30,7 +30,11 @@ limitations under the License.
 
                     <tabset>
                         <tab data-ng-repeat="unit in units.data" heading="{{unit.name}}">
-                            <canvas width="800" height="450" id="jsmpegCanvas">Get better browser dude</canvas>
+
+
+                            <!--<canvas width="800" height="450" id="jsmpegCanvas">Get better browser dude</canvas>-->
+
+
                         </tab>
                     </tabset>
                 </div>
@@ -69,18 +73,18 @@ limitations under the License.
         <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
         <script type="text/javascript" src="js/castCommunication.js"></script>
         <script type="text/javascript" src="js/datahubCommunication.js"></script>
-        <script type="text/javascript" src="js/jsmpg.js"></script>
+        <!--<script type="text/javascript" src="js/jsmpg.js"></script>-->
         <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
         <script type="text/javascript">
 
 
 
             // video stream:
-            var canvas = document.getElementById('jsmpegCanvas');
+            /*var canvas = document.getElementById('jsmpegCanvas');
             var player = new jsmpeg('http://192.168.1.251', {canvas:canvas, autoplay:true, loop: false});
             canvas.addEventListener('click', function(){
                 if(player.playing) { player.pause(); } else { player.play(); }
-            }, false);
+            }, false);*/
 
 
 
