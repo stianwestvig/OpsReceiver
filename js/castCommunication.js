@@ -35,34 +35,34 @@ function setupCastCommunication() {
                     'urn:x-cast:no.bouvet.cast.opscast');
 
     // handler for the CastMessageBus message event
-    window.messageBus.onMessage = function(event) {
-        console.log('Message [' + event.senderId + ']: ' + event.data);
-        // display the message from the sender
-        displayText(event.data);
-        // inform all senders on the CastMessageBus of the incoming message event
-        // sender message listener will be invoked
-        window.messageBus.send(event.senderId, event.data);
+    // window.messageBus.onMessage = function(event) {
+    //     console.log('Message [' + event.senderId + ']: ' + event.data);
+    //     // display the message from the sender
+    //     displayText(event.data);
+    //     // inform all senders on the CastMessageBus of the incoming message event
+    //     // sender message listener will be invoked
+    //     window.messageBus.send(event.senderId, event.data);
 
-        var data = null;
-        try {
-            data = JSON.parse(event.data);
-        }
-        catch (ex) {}
-        if (data != null) {
-            if(data.topic === 'tabChange') {
-                var key = data.payload.id;
-                window.units.data[key].active = true;
-            }
+    //     var data = null;
+    //     try {
+    //         data = JSON.parse(event.data);
+    //     }
+    //     catch (ex) {}
+    //     if (data != null) {
+    //         if(data.topic === 'tabChange') {
+    //             var key = data.payload.id;
+    //             window.units.data[key].active = true;
+    //         }
 
-            if(data.topic === 'senderInit') {
-                messageBus.broadcast(JSON.stringify(window.units.data));
-            }
-        }
-
-
+    //         if(data.topic === 'senderInit') {
+    //             messageBus.broadcast(JSON.stringify(window.units.data));
+    //         }
+    //     }
 
 
-    };
+
+
+    // };
 
     // initialize the CastReceiverManager with an application status message
     window.castReceiverManager.start({statusText: "Application is starting"});
