@@ -1,21 +1,27 @@
 
-app.controller('unitsController', function($rootScope){
+app.controller('unitsController', function($rootScope, window){
     var units = this;
 
     units.data = {};
 
-    /*units.data = {
-        '123': {
-            name: 'Stian',
-            id: '123',
-            marker: 'some marker'
-        },
-        '124': {
-            name: 'Rittik',
-            id: '124',
-            marker: 'some other marker'
+    window.messageBus.onMessage = function(event) {
+        var data = null;
+        try {
+            data = JSON.parse(event.data);
         }
-    };*/
+        catch (ex) {}
+        if (data != null) {
+            if(data.topic === 'tabChange') {
+                var key = data.payload.id;
+                units.data[key].active = true;
+            }
+
+            if(data.topic === 'senderInit') {
+                messageBus.broadcast(JSON.stringify(units.data));
+            }
+        }
+    };
+
 
     window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
@@ -29,87 +35,65 @@ app.controller('unitsController', function($rootScope){
 
         // get data json
 
-        var data = JSON.parse(event.data);
-        console.log('angular, data.topic:', data.topic);
+        var data = null;
+        try {
+            data = JSON.parse(event.data);
+        }
+        catch (ex) {}
+        if (data != null) {
+            console.log('angular, data.topic:', data.topic);
 
 
 
-        // users:
-        if (data.topic === 'setUser') {
-            console.log('units.data', units.data);
-            console.log('event.data.payload', data.payload);
+            // users:
+            if (data.topic === 'setUser') {
+                console.log('units.data', units.data);
+                console.log('event.data.payload', data.payload);
 
-            var key = data.payload.user.id;
-            if (typeof(units.data[key]) == 'undefined') {
-                console.log('adding new user:', data.payload.user);
-                units.data[key] = data.payload.user;
-                console.log('AFTER adding new user:', units.data);
-                messageBus.broadcast(JSON.stringify(units.data));
-                $rootScope.$apply(function () {
+                var key = data.payload.user.id;
+                if (typeof(units.data[key]) == 'undefined') {
+                    console.log('adding new user:', data.payload.user);
                     units.data[key] = data.payload.user;
-                });
+                    console.log('AFTER adding new user:', units.data);
+                    messageBus.broadcast(JSON.stringify(units.data));
+                    $rootScope.$apply(function () {
+                        units.data[key] = data.payload.user;
+                    });
+                }
+            }
+
+            // set active tab:
+            if (data.topic === 'setTab') {
+                units.data[key].active = true;
+            }
+
+
+            // locations:
+            if (data.topic === 'locationUpdate') {
+                var posInArray = $.inArray(data.payload.user.id, units.data);
+                if (posInArray > 0) {
+                    var myLatlng = new google.maps.LatLng(
+                        data.payload.location.latitude,
+                        data.payload.location.longitude
+                    );
+                    var mapOptions = {
+                        zoom: 4,
+                        center: myLatlng
+                    };
+                    var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+
+                    var marker = new google.maps.Marker({
+                        position: myLatlng,
+                        title: data.payload.user.name
+                    });
+
+                    marker.setMap(map);
+
+                    units.data[posInArray].marker = marker;
+                }
+                console.log('units.data after locationUpdate', units.data);
             }
         }
 
-        // set active tab:
-        if (data.topic === 'setTab') {
-            units.data[key].active = true;
-        }
-
-
-        // locations:
-        if (data.topic === 'locationUpdate') {
-            var posInArray = $.inArray(data.payload.user.id, units.data);
-            if (posInArray > 0) {
-                var myLatlng = new google.maps.LatLng(
-                    data.payload.location.latitude,
-                    data.payload.location.longitude
-                );
-                var mapOptions = {
-                    zoom: 4,
-                    center: myLatlng
-                };
-                var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-
-                var marker = new google.maps.Marker({
-                    position: myLatlng,
-                    title: data.payload.user.name
-                });
-
-                marker.setMap(map);
-
-                units.data[posInArray].marker = marker;
-            }
-            console.log('units.data after locationUpdate', units.data);
-        }
     };
-
-
-    /*var location = {
-        topic: 'locationUpdate',
-        payload: {
-            location: {
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                accuracy: position.coords.accuracy
-            }
-        },
-        user: {}
-    };
-
-
-    var example = {
-        topic: 'setUser',
-        payload: {
-            user: {
-                name: username,
-                ip: ip,
-                source: 'app',
-                id: 'some socket id'
-            }
-        }
-    };*/
-
-
-
 });
