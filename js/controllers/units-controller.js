@@ -5,6 +5,12 @@ app.controller('unitsController', function($rootScope, window){
     units.data = {};
 
     window.messageBus.onMessage = function(event) {
+
+        displayText(event.data);
+        // inform all senders on the CastMessageBus of the incoming message event
+        // sender message listener will be invoked
+        window.messageBus.send(event.senderId, event.data);
+
         var data = null;
         try {
             data = JSON.parse(event.data);
