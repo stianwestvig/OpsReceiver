@@ -4,7 +4,7 @@ app.controller('unitsController', function($rootScope){
     var messageBus = null;
     var datahubSocket = null;
 
-    window.unit.data = units.data = {};
+    units.data = {};
 
     function init() {
         setupCastCommunication();
