@@ -66,7 +66,7 @@ app.controller('unitsController', function($rootScope){
                 }
 
                 if(data.topic === 'senderInit') {
-                    window.messageBus.broadcast(JSON.stringify(window.units.data));
+                    window.messageBus.broadcast(JSON.stringify(units.data));
                 }
             }
         };
