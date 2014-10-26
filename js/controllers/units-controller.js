@@ -4,7 +4,31 @@ app.controller('unitsController', function($rootScope){
 
     window.unit.data = units.data = {};
 
- /*   window.messageBus.onMessage = function(event) {
+    window.messageBus.onMessage = function(event) {
+        console.log('Message [' + event.senderId + ']: ' + event.data);
+        // display the message from the sender
+        displayText(event.data);
+        // inform all senders on the CastMessageBus of the incoming message event
+        // sender message listener will be invoked
+        window.messageBus.send(event.senderId, event.data);
+
+        var data = null;
+        try {
+            data = JSON.parse(event.data);
+        }
+        catch (ex) {}
+        if (data != null) {
+            if(data.topic === 'tabChange') {
+                var key = data.payload.id;
+                window.units.data[key].active = true;
+            }
+
+            if(data.topic === 'senderInit') {
+                window.messageBus.broadcast(JSON.stringify(window.units.data));
+            }
+        }
+    };
+/*   window.messageBus.onMessage = function(event) {
 
         displayText(event.data);
         // inform all senders on the CastMessageBus of the incoming message event
@@ -23,7 +47,7 @@ app.controller('unitsController', function($rootScope){
             }
 
             if(data.topic === 'senderInit') {
-                messageBus.broadcast(JSON.stringify(units.data));
+                window.messageBus.broadcast(JSON.stringify(units.data));
             }
         }
     };
