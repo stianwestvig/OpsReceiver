@@ -62,7 +62,7 @@ app.controller('unitsController', function($rootScope){
             if (data != null) {
                 if(data.topic === 'tabChange') {
                     var key = data.payload.id;
-                    window.units.data[key].active = true;
+                    units.data[key].active = true;
                 }
 
                 if(data.topic === 'senderInit') {
