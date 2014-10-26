@@ -125,28 +125,19 @@ app.controller('unitsController', function($rootScope){
 
                 // locations:
                 if (data.topic === 'locationUpdate') {
-                    var posInArray = $.inArray(data.payload.user.id, units.data);
-                    if (posInArray > 0) {
-                        var myLatlng = new google.maps.LatLng(
-                            data.payload.location.latitude,
-                            data.payload.location.longitude
-                        );
-                        var mapOptions = {
-                            zoom: 4,
-                            center: myLatlng
-                        };
-                        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+                    var key = data.payload.user.id;
+                    if (typeof(units.data[key]) == 'undefined') {
 
-                        var marker = new google.maps.Marker({
-                            position: myLatlng,
-                            title: data.payload.user.name
+                        units.data[key].location.latitude = data.payload.location.latitude;
+                        units.data[key].location.longitude = data.payload.location.longitude;
+
+                        $rootScope.$apply(function () {
+                            units.data[key].location.latitude = data.payload.location.latitude;
+                            units.data[key].location.longitude = data.payload.location.longitude;
                         });
-
-                        marker.setMap(map);
-
-                        units.data[posInArray].marker = marker;
                     }
-                    console.log('units.data after locationUpdate', units.data);
+
+
                 }
             }
 
