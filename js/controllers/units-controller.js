@@ -1,5 +1,5 @@
 
-app.controller('unitsController', function($rootScope, window){
+app.controller('unitsController', function($rootScope){
     var units = this;
 
     window.unit.data = units.data = {};
@@ -29,7 +29,7 @@ app.controller('unitsController', function($rootScope, window){
     };
 */
 
-    window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
+    datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
     datahubSocket.onopen = function (event) {
         datahubSocket.send("OpsCast socket connected");
