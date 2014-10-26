@@ -2,9 +2,9 @@
 app.controller('unitsController', function($rootScope, window){
     var units = this;
 
-    units.data = {};
+    window.unit.data = units.data = {};
 
-    window.messageBus.onMessage = function(event) {
+ /*   window.messageBus.onMessage = function(event) {
 
         displayText(event.data);
         // inform all senders on the CastMessageBus of the incoming message event
@@ -27,7 +27,7 @@ app.controller('unitsController', function($rootScope, window){
             }
         }
     };
-
+*/
 
     window.datahubSocket = new WebSocket("ws://nanopils.servebeer.com:2233/ws", "protocolOne");
 
