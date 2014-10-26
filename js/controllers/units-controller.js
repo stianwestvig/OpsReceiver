@@ -61,6 +61,8 @@ app.controller('unitsController', function($rootScope){
             catch (ex) {}
             if (data != null) {
                 if(data.topic === 'tabChange') {
+                    console.log('TabChange: data = ');
+                    console.log(data);
                     var key = data.payload.id;
                     units.data[key].active = true;
                 }
