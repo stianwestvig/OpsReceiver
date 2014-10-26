@@ -35,8 +35,10 @@ limitations under the License.
                         <tab data-ng-repeat="unit in units.data" heading="{{unit.name}}">
                             <div class="panel video"></div>
 
+                            <h2>{{unit.location.latitude}}</h2>
+                            <h2>{{unit.location.longitude}}</h2>
+
                             <h2>{{unit.id}}</h2>
-                            <h2>{{unit.marker}}</h2>
 
                             <!--<canvas width="800" height="450" id="jsmpegCanvas">Get better browser dude</canvas>-->
 
